@@ -54,8 +54,8 @@ const startServer = async () => {
     console.log('DB synced');
 
     // 🔥 IMPORTANT FIX HERE
-    server.listen(PORT, () => {
-      console.log(`Server running on http://localhost:${PORT}`);
+    server.listen(process.env.PORT || 3000, '0.0.0.0', () => {
+  console.log("Server running on port 3000");
     });
 
   } catch (error) {
