@@ -2,6 +2,7 @@ import express from 'express';
 import { sequelize } from './models/index.js';
 import transactionRoutes from './routes/transaction.routes.js';
 import insightRoutes from './routes/insight.routes.js';
+import userRoutes from './routes/user.routes.js';
 import http from "http";
 import { Server } from "socket.io";
 import cors from "cors";
@@ -15,6 +16,7 @@ app.use(cors());
 // Routes
 app.use('/transactions', transactionRoutes);
 app.use('/insights', insightRoutes);
+app.use('/users', userRoutes);
 
 // HTTP server
 const server = http.createServer(app);

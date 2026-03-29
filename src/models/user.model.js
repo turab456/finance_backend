@@ -9,7 +9,7 @@ const User = sequelize.define('User', {
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   monthly_income: {
     type: DataTypes.FLOAT,
