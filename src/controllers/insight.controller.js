@@ -1,6 +1,8 @@
 import { generateInsights } from '../services/insight.service.js';
 import jwt from 'jsonwebtoken';
 
+const JWT_SECRET = process.env.JWT_SECRET || 'your_default_secret';
+
 export const getInsightsController = async (req, res) => {
   try {
     const authHeader = req.headers.authorization;
@@ -19,7 +21,7 @@ export const getInsightsController = async (req, res) => {
     }
 
     const userId = decoded.userId;
-
+    console.log(userId)
     if (!userId) {
       return res.status(400).json({ error: 'userId missing in token' });
     }

@@ -36,6 +36,11 @@ const Transaction = sequelize.define('Transaction', {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+    sms_hash: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    unique: true,
+  },
   transaction_date: {
     type: DataTypes.DATE,
     allowNull: false,

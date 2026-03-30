@@ -15,6 +15,10 @@ const User = sequelize.define('User', {
     type: DataTypes.FLOAT,
     allowNull: true,
   },
+  current_balance: {
+  type: DataTypes.FLOAT,
+  defaultValue: 0
+}
 }, {
   tableName: 'users',
   timestamps: true,
