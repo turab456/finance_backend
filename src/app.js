@@ -13,6 +13,24 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
+// --- Custom Logger Middleware ---
+app.use((req, res, next) => {
+  const start = Date.now();
+  console.log(`\n[${new Date().toISOString()}] >>> ${req.method} ${req.url}`);
+  
+  if (req.body && Object.keys(req.body).length > 0) {
+    console.log(`Body:`, JSON.stringify(req.body));
+  }
+
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`[${new Date().toISOString()}] <<< ${req.method} ${req.url} - Status: ${res.statusCode} (${duration}ms)`);
+  });
+
+  next();
+});
+// --------------------------------
+
 // Routes
 app.use('/transactions', transactionRoutes);
 app.use('/insights', insightRoutes);
